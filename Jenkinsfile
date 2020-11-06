@@ -14,9 +14,15 @@ pipeline {
             }
         }
 
-        stage('3. Echo') {
+        stage('3. Docker Build Image') {
             steps {
-                echo 'Clone git done'
+                sh 'docker build nodejs-todo'
+            }
+        }
+
+        stage('4. Install Docker compose') {
+            steps {
+                sh 'docker-compose up -d'
             }
         }
     }
